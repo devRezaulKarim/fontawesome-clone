@@ -1,3 +1,4 @@
+import HeaderFilters from "./HeaderFilters";
 import HeaderSearch from "./HeaderSearch";
 import Navbar from "./Navbar";
 
@@ -6,6 +7,7 @@ const Header = () => {
     <>
       <Navbar />
       <HeaderSearch />
+      <HeaderFilters />
     </>
   );
 };

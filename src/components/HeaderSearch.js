@@ -44,11 +44,11 @@ const HeaderSearch = () => {
           onClick={(e) => setSearched("")}
           className="absolute right-6 top-1/2 -translate-y-1/2 text-sm px-1 rounded-full cursor-pointer"
         >
-          <i class="fa-solid fa-circle-xmark text-lg text-gray-400 hover:text-red-400"></i>
+          <i className="fa-solid fa-circle-xmark text-lg text-gray-400 hover:text-red-400"></i>
         </span>
       ) : (
         <span className=" absolute right-6 top-1/2 -translate-y-1/2 text-sm text-gray-500">
-          Powered by <i class="fa-brands fa-algolia"></i> Algolia
+          Powered by <i className="fa-brands fa-algolia"></i> Algolia
         </span>
       )}
     </div>
