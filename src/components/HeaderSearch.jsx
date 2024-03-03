@@ -41,7 +41,7 @@ const HeaderSearch = () => {
       />
       {searched ? (
         <span
-          onClick={(e) => setSearched("")}
+          onClick={() => setSearched("")}
           className="absolute right-6 top-1/2 -translate-y-1/2 text-sm px-1 rounded-full cursor-pointer"
         >
           <i className="fa-solid fa-circle-xmark text-lg text-gray-400 hover:text-red-400"></i>
