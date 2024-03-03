@@ -1,6 +1,4 @@
-"use client";
-
-import { navLinksItems } from "@/utls/navLinksItems";
+import { navLinksItems } from "../utls/navLinksItems";
 import NavLinks from "./NavLinks";
 import { useState } from "react";
 
@@ -13,11 +11,11 @@ const Navbar = () => {
           <i className="fa-solid fa-font-awesome text-[var(--color-secondary)]"></i>
           <span className="absolute w-[3px] h-[70%] bg-[#183153] rounded-full left-0 bottom-[6px]"></span>
         </div>
-        <div className="navLinks flex items-center gap-12">
+        <ul className="navLinks flex items-center gap-12">
           {navLinksItems.map((item) => (
             <NavLinks key={item} item={item} />
           ))}
-        </div>
+        </ul>
       </div>
 
       <div className="loginBtn">
