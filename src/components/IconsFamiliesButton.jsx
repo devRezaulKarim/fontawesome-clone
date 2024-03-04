@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const IconsFamiliesButton = ({ btn }) => {
   return (
     <button className="border-4 border-white focus:border-[var(--color-tertiary)]">

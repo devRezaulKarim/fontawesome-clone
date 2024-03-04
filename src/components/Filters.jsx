@@ -4,7 +4,7 @@ import FilterItem from "./FilterItem";
 
 const Filters = () => {
   return (
-    <div>
+    <div className="w-60">
       <div>
         <h5 className="text-xs font-bold leading-5 tracking-wide text-[var(--color-primary)]  font-quicksand">
           STYLE

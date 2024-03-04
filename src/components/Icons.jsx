@@ -4,7 +4,7 @@ import Icon from "./Icon";
 const Icons = () => {
   const icons = tempIcons;
   return (
-    <div className="flex flex-wrap justify-between gap-6">
+    <div className="flex flex-wrap gap-5">
       {icons.map((icon) => (
         <Icon key={icon.icon} icon={icon} />
       ))}
