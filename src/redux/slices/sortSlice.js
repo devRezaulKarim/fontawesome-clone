@@ -10,7 +10,6 @@ const sortSlice = createSlice({
     handleSorting: (state, action) => {
       const data = action.payload.toLowerCase();
       return {
-        ...state,
         sort: data,
       };
     },

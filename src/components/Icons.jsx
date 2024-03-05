@@ -1,30 +1,29 @@
 import { useSelector } from "react-redux";
 import Icon from "./Icon";
 import { useEffect, useState } from "react";
+import { sortFunction } from "../utls/sortFunction";
 
 const Icons = () => {
   const allIcons = useSelector((state) => state.icons.icons);
   const loading = useSelector((state) => state.icons.isLoading);
-  const error = useSelector((state) => state.icons.error);
+  // const error = useSelector((state) => state.icons.error);
   const sort = useSelector((state) => state.sort.sort);
+  const selectedFamily = useSelector((state) => state.families.families);
 
   const [uiIcons, setUiIcons] = useState(allIcons);
 
   useEffect(() => {
     let targetIcons = [...allIcons];
-    targetIcons =
-      sort === "alphabetical"
-        ? [...targetIcons].sort((a, b) =>
-            a.icon.split(" ")[1].localeCompare(b.icon.split(" ")[1])
-          )
-        : sort === "release"
-        ? [...targetIcons].sort((a, b) =>
-            b.icon.split(" ")[1].localeCompare(a.icon.split(" ")[1])
-          )
-        : [...allIcons];
 
+    // handling the sorting
+    targetIcons = sortFunction(allIcons, sort);
+    if (selectedFamily.length > 0)
+      targetIcons = targetIcons.filter((icon) =>
+        selectedFamily.includes(icon.family.toLowerCase())
+      );
+    console.log(targetIcons);
     setUiIcons(targetIcons);
-  }, [allIcons, sort]);
+  }, [allIcons, sort, selectedFamily]);
 
   if (loading) {
     return <p>Loading.........</p>;
