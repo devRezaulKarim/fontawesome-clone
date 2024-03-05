@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { sorting, versions } from "../utls/sortingOptions";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { handleSorting } from "../redux/slices/sortSlice";
 
 const Sorting = () => {
+  const dispatch = useDispatch();
   const [isFocused, setIsFocused] = useState("");
 
   const handleDocumentClick = (event) => {
@@ -30,6 +33,7 @@ const Sorting = () => {
         <div className="pr-3 border-2 border-gray-300 rounded-xl overflow-hidden">
           <select
             onClick={() => setIsFocused("sort")}
+            onChange={(e) => dispatch(handleSorting(e.target.value))}
             className=" py-3 px-3 outline-none  cursor-pointer"
             name=""
             id=""
