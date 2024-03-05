@@ -27,7 +27,9 @@ const IconsFamiliesButton = ({ btn }) => {
             <i key={icon} className={icon}></i>
           ))}
         </div>
-        <span className="text-sm mt-3">{btn.title}</span>
+        <span className="text-sm mt-3">{`${
+          btn.title === "Brand" ? `${btn.title}s` : `${btn.title}`
+        }`}</span>
       </div>
     </button>
   );

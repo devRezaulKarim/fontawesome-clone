@@ -18,7 +18,7 @@ export const iconFamilyBtns = [
     ],
   },
   {
-    title: "Brands",
+    title: "Brand",
     icons: ["fa-solid fa-font-awesome"],
   },
   {

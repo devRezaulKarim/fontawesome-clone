@@ -21,6 +21,7 @@ const Icons = () => {
       targetIcons = targetIcons.filter((icon) =>
         selectedFamily.includes(icon.family.toLowerCase())
       );
+      
     console.log(targetIcons);
     setUiIcons(targetIcons);
   }, [allIcons, sort, selectedFamily]);
