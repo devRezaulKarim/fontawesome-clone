@@ -7,6 +7,7 @@ const iconSlice = createSlice({
     isLoading: false,
     error: "",
     icons: [],
+    uiIcons: [],
   },
 
   reducers: {
@@ -28,10 +29,17 @@ const iconSlice = createSlice({
         icons: action.payload,
       };
     },
+    handleUiIcons: (state, action) => {
+      return {
+        ...state,
+        uiIcons: action.payload,
+      };
+    },
   },
 });
 
-export const { handleLoading, handleError, getIcons } = iconSlice.actions;
+export const { handleLoading, handleError, getIcons, handleUiIcons } =
+  iconSlice.actions;
 
 export default iconSlice.reducer;
 
