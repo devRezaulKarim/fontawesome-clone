@@ -6,7 +6,7 @@ const iconSlice = createSlice({
   initialState: {
     isLoading: false,
     error: "",
-    icons: [],
+    icons: {},
     uiIcons: [],
   },
 
@@ -50,21 +50,8 @@ export const fetchData = () => {
       const response = await axios.get(
         "https://rezauls-json-server.vercel.app/fontawesome-icons"
       );
-      const solidIcons = response.data.solid;
-      const regularIcons = response.data.regular;
-      const lightIcons = response.data.light;
-      const thinIcons = response.data.thin;
-      const duotoneIcons = response.data.duotone;
-      const brandIcons = response.data.brands;
-      const allIcons = [
-        ...solidIcons,
-        ...regularIcons,
-        ...lightIcons,
-        ...thinIcons,
-        ...duotoneIcons,
-        ...brandIcons,
-      ];
-      dispatch(getIcons(allIcons));
+
+      dispatch(getIcons(response.data));
       dispatch(handleLoading(false));
     } catch (error) {
       dispatch(handleError(error.message));

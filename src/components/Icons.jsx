@@ -3,6 +3,7 @@ import Icon from "./Icon";
 import { useEffect, useState } from "react";
 import { sortFunction } from "../utls/sortFunction";
 import { handleUiIcons } from "../redux/slices/iconSlice";
+import { iconProcessor } from "../utls/IconProcessor";
 
 const Icons = () => {
   const allIcons = useSelector((state) => state.icons.icons);
@@ -11,16 +12,24 @@ const Icons = () => {
   const sort = useSelector((state) => state.sort.sort);
   const selectedFamily = useSelector((state) => state.families.families);
   const selectedLicense = useSelector((state) => state.license.license);
+  const selectedStyles = useSelector((state) => state.styles.styles);
 
   const dispatch = useDispatch();
 
-  const [uiIcons, setUiIcons] = useState(allIcons);
+  const [allIconsArray, setAllIconsArray] = useState([]);
+  const [uiIcons, setUiIcons] = useState(allIconsArray);
 
   useEffect(() => {
-    let targetIcons = [...allIcons];
+    const icons = iconProcessor(allIcons);
+    setAllIconsArray(icons);
+    setUiIcons(icons);
+  }, [allIcons]);
+
+  useEffect(() => {
+    let targetIcons = [...allIconsArray];
 
     // handling the sorting
-    targetIcons = sortFunction(allIcons, sort);
+    targetIcons = sortFunction(allIconsArray, sort);
     // handling family filtration
     if (selectedFamily.length > 0)
       targetIcons = targetIcons.filter((icon) =>
@@ -31,12 +40,22 @@ const Icons = () => {
       targetIcons = targetIcons.filter(
         (icon) => icon.license.toLowerCase() === selectedLicense
       );
-
-    console.log(targetIcons);
+    // handling style filtration
+    if (selectedStyles.length > 0)
+      targetIcons = targetIcons.filter((icon) =>
+        selectedStyles.includes(icon.Style.toLowerCase())
+      );
 
     setUiIcons(targetIcons);
     dispatch(handleUiIcons(targetIcons));
-  }, [allIcons, sort, selectedFamily, dispatch, selectedLicense]);
+  }, [
+    allIconsArray,
+    sort,
+    selectedFamily,
+    dispatch,
+    selectedLicense,
+    selectedStyles,
+  ]);
 
   if (loading) {
     return <p>Loading.........</p>;
