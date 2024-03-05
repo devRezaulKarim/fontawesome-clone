@@ -1,11 +1,17 @@
-import { tempIcons } from "../utls/tempData";
+import { useSelector } from "react-redux";
 import Icon from "./Icon";
 
 const Icons = () => {
-  const icons = tempIcons;
+  const allIcons = useSelector((state) => state.icons.icons);
+  const loading = useSelector((state) => state.icons.isLoading);
+  const error = useSelector((state) => state.icons.error);
+
+  if (loading) {
+    return <p>Loading.........</p>;
+  }
   return (
     <div className="flex flex-wrap gap-5">
-      {icons.map((icon) => (
+      {allIcons.map((icon) => (
         <Icon key={icon.icon} icon={icon} />
       ))}
     </div>

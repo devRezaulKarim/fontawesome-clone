@@ -1,7 +1,15 @@
+import { useDispatch } from "react-redux";
 import Filters from "./Filters";
 import Icons from "./Icons";
+import { useEffect } from "react";
+import { fetchData } from "../redux/slices/iconSlice";
 
 const IconsContainer = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
   return (
     <div className="bg-[#F0F1F3]">
       <div className="container lg:max-w-[1080px] 2xl:xl:max-w-[1440px] mx-auto flex pt-4">
