@@ -25,13 +25,9 @@ const FilterItem = ({ item, style }) => {
       {selectedStyleAndCats.includes(item.name.toLowerCase()) ? (
         <i className="fa-solid fa-square-check absolute top-1/2 -translate-y-1/2 left-5 -translate-x-1/2"></i>
       ) : (
-        <span>
-          <i
-            className={`${item.icon} absolute top-1/2 -translate-y-1/2 left-5 -translate-x-1/2 group-hover:hidden`}
-          ></i>
-          <i
-            className={`fa-regular fa-square absolute top-1/2 -translate-y-1/2 left-5 -translate-x-1/2 hidden group-hover:block`}
-          ></i>
+        <span className="absolute top-1/2 -translate-y-1/2 left-5 -translate-x-1/2">
+          <i className={`${item.icon}   group-hover:hidden`}></i>
+          <i className={`fa-regular fa-square  hidden group-hover:block`}></i>
         </span>
       )}
       <span>{item.name}</span>
