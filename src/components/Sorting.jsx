@@ -30,11 +30,11 @@ const Sorting = () => {
             : "border-white"
         }`}
       >
-        <div className="pr-3 border-2 border-gray-300 rounded-xl overflow-hidden">
+        <div className="pr-1 md:pr-3 border-2 border-gray-300 rounded-xl overflow-hidden">
           <select
             onClick={() => setIsFocused("sort")}
             onChange={(e) => dispatch(handleSorting(e.target.value))}
-            className=" py-3 px-3 outline-none  cursor-pointer"
+            className=" py-2 md:py-3 px-1 md:px-3 outline-none text-sm md:text-base cursor-pointer"
             name=""
             id=""
           >
@@ -53,10 +53,10 @@ const Sorting = () => {
             : "border-white"
         }`}
       >
-        <div className="pr-3 border-2 border-gray-300 rounded-xl overflow-hidden">
+        <div className="pr-1 md:pr-3pr-3 border-2 border-gray-300 rounded-xl overflow-hidden">
           <select
             onClick={() => setIsFocused("version")}
-            className=" py-3 px-3 outline-none  cursor-pointer"
+            className=" py-2 md:py-3 px-1 md:px-3 outline-none text-sm md:text-base cursor-pointer"
             name=""
             id=""
           >

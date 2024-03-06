@@ -13,7 +13,7 @@ const GridViewToggleBtn = ({ btn }) => {
       className="p-[1px] border-[3px] border-white focus:border-[var(--color-tertiary)] rounded-lg relative group"
     >
       <div
-        className={`text-xl  active:bg-[var(--color-primary)] active:text-white py-1 px-3 rounded hover:text-[var(--color-secondary)] ${
+        className={`text-lg md:text-xl  active:bg-[var(--color-primary)] active:text-white py-1 px-1 md:px-3 rounded hover:text-[var(--color-secondary)] ${
           grids === btn.title
             ? "text-[var(--color-secondary)]"
             : "text-[var(--color-primary)]"

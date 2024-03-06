@@ -19,10 +19,10 @@ const IconsFamiliesButton = ({ btn }) => {
   return (
     <button
       onClick={() => handleSelectFamily(btn.title)}
-      className="border-4 border-white focus:border-[var(--color-tertiary)]"
+      className="border-4 border-white focus:border-[var(--color-tertiary)] mt-4 lg:mt-0"
     >
       <div
-        className={`flex flex-col items-center justify-center m-[1px] w-32 aspect-square text-[var(--color-primary)]  border-b-4 border-white hover:border-b-[var(--color-secondary)] duration-100 ${
+        className={`flex flex-col items-center justify-center m-[1px] w-20 md:w-32 aspect-square text-[var(--color-primary)] border-b-2 md:border-b-4 border-white hover:border-b-[var(--color-secondary)] duration-100 ${
           allSelectedFamily.includes(btn.title.toLowerCase())
             ? "border-b-[var(--color-secondary)] hover:border-b-[var(--color-tertiary)] text-[var(--color-secondary)] hover:text-[var(--color-tertiary)]"
             : "border-white hover:text-[var(--color-secondary)]"
