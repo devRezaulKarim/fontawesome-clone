@@ -20,7 +20,7 @@
   animation: animloader 2s linear infinite;
 }
 .loader::after {
-  content: '';  
+  content: "";
   box-sizing: border-box;
   width: 6px;
   height: 24px;
@@ -48,4 +48,42 @@
     transform: translate(-10px, -10px);
   }
 }
-    
+
+.loader2 {
+  border-radius: 16px;
+  width: 215px;
+  height: 215px;
+  display: block;
+  margin: auto;
+  position: relative;
+  background: #fff;
+  box-sizing: border-box;
+}
+.loader2::after {
+  content: "";
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+  top: 15px;
+  left: 15px;
+  position: absolute;
+  background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.5) 50%,
+      transparent 100%
+    ),
+    radial-gradient(circle 50px, #ddd 100%, transparent 0),
+    linear-gradient(#ddd 16px, transparent 0),
+    linear-gradient(#ddd 24px, transparent 0);
+  background-repeat: no-repeat;
+  background-size: 75px 175px, 100% 100px, 80% 16px, 80% 16px;
+  background-position: -185px 0, center 10px, center 125px, center 155px;
+  box-sizing: border-box;
+  animation: animloader2 1s linear infinite;
+}
+
+@keyframes animloader2 {
+  to {
+    background-position: 185px 0, center 10px, center 125px, center 155px;
+  }
+}

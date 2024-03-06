@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { sortFunction } from "../utls/sortFunction";
 import { handleUiIcons } from "../redux/slices/iconSlice";
 import { iconProcessor } from "../utls/IconProcessor";
+import ReactPaginate from "react-paginate";
 
 const Icons = () => {
   const allIcons = useSelector((state) => state.icons.icons);
@@ -21,6 +22,14 @@ const Icons = () => {
 
   const [allIconsArray, setAllIconsArray] = useState([]);
   const [uiIcons, setUiIcons] = useState(allIconsArray);
+
+  // paginate states
+
+  const [page, setPage] = useState(0);
+  const [iconOffset, setIconOffset] = useState(0);
+  const [currentIcons, setCurrentIcons] = useState([]);
+  const iconsPerPage = 200;
+  const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
     const icons = iconProcessor(allIcons);
@@ -66,6 +75,10 @@ const Icons = () => {
 
     setUiIcons(targetIcons);
     dispatch(handleUiIcons(targetIcons));
+
+    // page resetter
+    setIconOffset(0);
+    setPage(0);
   }, [
     allIconsArray,
     sort,
@@ -77,15 +90,66 @@ const Icons = () => {
     searchedWord,
   ]);
 
+  useEffect(() => {
+    const endOffset = iconOffset + iconsPerPage;
+    setCurrentIcons(uiIcons.slice(iconOffset, endOffset));
+    setPageCount(Math.ceil(uiIcons.length / iconsPerPage));
+  }, [page, uiIcons, iconOffset]);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * iconsPerPage) % uiIcons.length;
+    setPage(event.selected);
+    setIconOffset(newOffset);
+  };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [page]);
+
   return (
-    <div
-      className={`flex flex-wrap ${
-        grids === "Roomy" ? "gap-3 lg:gap-5" : "gap-2 lg:gap-3"
-      }`}
-    >
-      {uiIcons.map((icon) => (
-        <Icon key={icon.icon} icon={icon} />
-      ))}
+    <div>
+      {uiIcons.length > 0 && (
+        <div className="flex items-center justify-between  py-4">
+          <h4 className="font-bold font-quicksand text-xl text-[var(--color-primary)]">
+            {uiIcons.length.toLocaleString()} Icons
+          </h4>
+          <span className="text-gray-500">{`Page ${
+            page + 1
+          } of ${pageCount}`}</span>
+        </div>
+      )}
+
+      <div
+        className={`flex flex-wrap ${
+          grids === "Roomy" ? "gap-3 lg:gap-5" : "gap-2 lg:gap-3"
+        }`}
+      >
+        {currentIcons.map((icon) => (
+          <Icon key={icon.icon} icon={icon} />
+        ))}
+      </div>
+      <div className="flex justify-center gap-2 flex-wrap my-10">
+        {uiIcons.length > 200 && (
+          <ReactPaginate
+            className="flex gap-4 items-center"
+            pageLinkClassName="rounded text-[var(--color-secondary)] p-4 hover:bg-gray-400 hover:text-[var(--color-primary)]"
+            activeLinkClassName="bg-[var(--color-secondary)] text-white font-bold hover:bg-[var(--color-secondary)] hover:text-white"
+            previousClassName="hidden"
+            nextClassName="text-[var(--color-secondary)] font-semibold hover:bg-gray-400 hover:text-[var(--color-primary)] p-4 rounded"
+            disabledClassName="hidden"
+            breakLabel="..."
+            nextLabel="Next ❯"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={2}
+            pageCount={pageCount}
+            previousLabel="< previous"
+            renderOnZeroPageCount={null}
+          />
+        )}
+      </div>
     </div>
   );
 };

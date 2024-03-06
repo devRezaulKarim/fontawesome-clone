@@ -7,7 +7,6 @@ import Spinner from "./Spinner";
 
 const IconsContainer = () => {
   const loading = useSelector((state) => state.icons.isLoading);
-  const uiIcons = useSelector((state) => state.icons.uiIcons);
   const isFilterOpen = useSelector((state) => state.filterToggle.isOpen);
 
   const dispatch = useDispatch();
@@ -28,14 +27,6 @@ const IconsContainer = () => {
           <Filters />
         </div>
         <div className="px-2 lg:px-0">
-          {uiIcons.length > 0 && (
-            <div className="flex items-center justify-between  py-4">
-              <h4 className="font-bold font-quicksand text-xl text-[var(--color-primary)]">
-                {uiIcons.length.toLocaleString()} Icons
-              </h4>
-              <span className="text-gray-500">Page 1 of 20</span>
-            </div>
-          )}
           <Icons />
         </div>
       </div>
