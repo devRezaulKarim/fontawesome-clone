@@ -17,6 +17,7 @@ const Icons = () => {
     (state) => state.categories.categories
   );
   const searchedWord = useSelector((state) => state.search.search);
+  const grids = useSelector((state) => state.grid.grid);
 
   const dispatch = useDispatch();
 
@@ -82,7 +83,7 @@ const Icons = () => {
     return <p>Loading.........</p>;
   }
   return (
-    <div className="flex flex-wrap gap-5">
+    <div className={`flex flex-wrap ${grids === "Roomy" ? "gap-5" : "gap-3"}`}>
       {uiIcons.map((icon) => (
         <Icon key={icon.icon} icon={icon} />
       ))}

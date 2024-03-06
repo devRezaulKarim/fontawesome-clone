@@ -6,6 +6,7 @@ import licenseSlice from "../slices/licenseSlice";
 import styleSlice from "../slices/styleSlice";
 import categorySlice from "../slices/categorySlice";
 import searchSlice from "../slices/searchSlice";
+import gridSlice from "../slices/gridSlice";
 
 export default configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export default configureStore({
     styles: styleSlice,
     categories: categorySlice,
     search: searchSlice,
+    grid: gridSlice,
   },
 });
