@@ -16,6 +16,7 @@ const Icons = () => {
   const selectedCategories = useSelector(
     (state) => state.categories.categories
   );
+  const searchedWord = useSelector((state) => state.search.search);
 
   const dispatch = useDispatch();
 
@@ -33,25 +34,35 @@ const Icons = () => {
 
     // handling the sorting
     targetIcons = sortFunction(allIconsArray, sort);
+
     // handling family filtration
     if (selectedFamily.length > 0)
       targetIcons = targetIcons.filter((icon) =>
         selectedFamily.includes(icon.family.toLowerCase())
       );
+
     // handling family filtration
     if (selectedLicense)
       targetIcons = targetIcons.filter(
         (icon) => icon.license.toLowerCase() === selectedLicense
       );
+
     // handling style filtration
     if (selectedStyles.length > 0)
       targetIcons = targetIcons.filter((icon) =>
         selectedStyles.includes(icon.Style)
       );
+
     // handling categories filtration
     if (selectedCategories.length > 0)
       targetIcons = targetIcons.filter((icon) =>
         selectedCategories.every((cat) => icon.category.includes(cat))
+      );
+
+    // handling search filtration
+    if (searchedWord)
+      targetIcons = targetIcons.filter((icon) =>
+        icon.icon.split(" ")[1].includes(searchedWord)
       );
 
     setUiIcons(targetIcons);
@@ -64,6 +75,7 @@ const Icons = () => {
     selectedLicense,
     selectedStyles,
     selectedCategories,
+    searchedWord,
   ]);
 
   if (loading) {

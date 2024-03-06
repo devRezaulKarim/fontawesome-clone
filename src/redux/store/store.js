@@ -5,6 +5,7 @@ import familySlice from "../slices/iconFamilySlice";
 import licenseSlice from "../slices/licenseSlice";
 import styleSlice from "../slices/styleSlice";
 import categorySlice from "../slices/categorySlice";
+import searchSlice from "../slices/searchSlice";
 
 export default configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export default configureStore({
     license: licenseSlice,
     styles: styleSlice,
     categories: categorySlice,
+    search: searchSlice,
   },
 });

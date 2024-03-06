@@ -1,12 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { handleSearch } from "../redux/slices/searchSlice";
 
 const HeaderSearch = () => {
+  const dispatch = useDispatch();
   const [isFocused, setIsFocused] = useState(false);
   const [searched, setSearched] = useState("");
 
-  const handleButtonClick = () => {
+  useEffect(() => {
+    dispatch(handleSearch(searched));
+  }, [searched, dispatch]);
+
+  const handleSearchFocus = () => {
     setIsFocused(true);
   };
 
@@ -24,7 +31,7 @@ const HeaderSearch = () => {
   }, []);
   return (
     <div
-      onClick={handleButtonClick}
+      onClick={handleSearchFocus}
       id="headerSearchContainer"
       className={`container max-w-[900px] mx-auto relative my-6 border-[3px]  rounded-full p-[1px] ${
         isFocused ? "border-[var(--color-tertiary)]" : "border-white"
@@ -35,7 +42,7 @@ const HeaderSearch = () => {
         className="border-2 border-[var(--color-primary)] w-full rounded-full py-4 px-12"
         type="text"
         name="headerSearch"
-        placeholder="Search 00000 icons..."
+        placeholder="Search 16,302 icons..."
         value={searched}
         onChange={(e) => setSearched(e.target.value)}
       />
