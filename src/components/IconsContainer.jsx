@@ -26,7 +26,7 @@ const IconsContainer = () => {
         >
           <Filters />
         </div>
-        <div className="px-2 lg:px-0 w-screen md:w-min">
+        <div className="px-2 lg:px-0 w-screen lg:w-min">
           <Icons />
         </div>
       </div>
