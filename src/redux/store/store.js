@@ -7,6 +7,7 @@ import styleSlice from "../slices/styleSlice";
 import categorySlice from "../slices/categorySlice";
 import searchSlice from "../slices/searchSlice";
 import gridSlice from "../slices/gridSlice";
+import filterToggleSlice from "../slices/filterToggleSlice";
 
 export default configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export default configureStore({
     categories: categorySlice,
     search: searchSlice,
     grid: gridSlice,
+    filterToggle: filterToggleSlice,
   },
 });

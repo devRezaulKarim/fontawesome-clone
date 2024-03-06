@@ -84,7 +84,11 @@ const Icons = () => {
     return <Spinner />;
   }
   return (
-    <div className={`flex flex-wrap ${grids === "Roomy" ? "gap-5" : "gap-3"}`}>
+    <div
+      className={`flex flex-wrap ${
+        grids === "Roomy" ? "gap-3 lg:gap-5" : "gap-2 lg:gap-3"
+      }`}
+    >
       {uiIcons.map((icon) => (
         <Icon key={icon.icon} icon={icon} />
       ))}

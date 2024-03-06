@@ -4,17 +4,41 @@ import { useState } from "react";
 
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <div className="container max-w-[1080px] mx-auto flex items-center h-20 justify-between">
-      <div className="flex gap-20">
-        <div className="logo text-2xl">
+    <div className="container max-w-[1080px] mx-auto flex items-center h-20 justify-between px-8 lg:px-0 relative">
+      <div className=" gap-20 hidden md:flex">
+        <div className="logo text-2xl ">
           <i className="fa-solid fa-font-awesome text-[var(--color-secondary)]"></i>
         </div>
-        <ul className="navLinks flex items-center gap-12">
+        <ul className="flex flex-col md:flex-row items-center gap-10 ">
           {navLinksItems.map((item) => (
             <NavLinks key={item} item={item} />
           ))}
         </ul>
+      </div>
+
+      {isMenuOpen && (
+        <ul className="mobileMenu absolute top-full left-0  z-50 bg-white flex flex-col  divide-y-2 w-full border-b-4 border-gray-400 duration-500">
+          {navLinksItems.map((item) => (
+            <NavLinks key={item} item={item} />
+          ))}
+        </ul>
+      )}
+
+      <div
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        className="min-w-6 block md:hidden text-2xl"
+      >
+        {isMenuOpen ? (
+          <i className="fa-solid fa-xmark"></i>
+        ) : (
+          <i className="fa-solid fa-bars"></i>
+        )}
+      </div>
+
+      <div className="mobileLogo text-2xl block md:hidden">
+        <i className="fa-solid fa-font-awesome text-[var(--color-secondary)]"></i>
       </div>
 
       <div className="loginBtn">

@@ -6,6 +6,7 @@ import { fetchData } from "../redux/slices/iconSlice";
 
 const IconsContainer = () => {
   const uiIcons = useSelector((state) => state.icons.uiIcons);
+  const isFilterOpen = useSelector((state) => state.filterToggle.isOpen);
 
   const dispatch = useDispatch();
 
@@ -14,11 +15,13 @@ const IconsContainer = () => {
   }, [dispatch]);
   return (
     <div className="bg-[#F0F1F3]">
-      <div className="container lg:max-w-[1080px] 2xl:xl:max-w-[1440px] mx-auto flex pt-4 min-h-screen">
-        <div className="pr-8">
+      <div className="container lg:max-w-[1080px] 2xl:xl:max-w-[1440px] mx-auto flex flex-col items-center lg:items-start lg:flex-row pt-4 min-h-screen">
+        <div
+          className={`lg:pr-8 ${isFilterOpen ? "block" : "hidden lg:block"}`}
+        >
           <Filters />
         </div>
-        <div className="">
+        <div className="px-2 lg:px-0">
           {uiIcons.length > 0 && (
             <div className="flex items-center justify-between  py-4">
               <h4 className="font-bold font-quicksand text-xl text-[var(--color-primary)]">

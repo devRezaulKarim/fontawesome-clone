@@ -7,12 +7,12 @@ const Icon = ({ icon }) => {
 
   return (
     <button
-      className={`bg-white text-[var(--color-primary)]  hover:bg-[#FFD43B] duration-100 rounded-lg flex   gap-4 relative ${
+      className={`bg-white text-[var(--color-primary)]  hover:bg-[#FFD43B] duration-100 rounded-lg flex gap-2 lg:gap-4 relative ${
         grids === "Roomy"
-          ? " w-44 flex-col items-center aspect-square justify-center"
+          ? "w-[100px] md:w-32 lg:w-44 flex-col items-center aspect-square justify-center"
           : grids === "Compact"
-          ? " w-[125px] flex-col items-center aspect-square justify-center"
-          : "w-48 flex-row justify-start items-center py-2 pl-4"
+          ? "w-20 md:w-[100px] lg:w-[125px] flex-col items-center aspect-square justify-center"
+          : "w-40 flex-row justify-start items-center py-2 pl-4"
       }`}
     >
       <span
@@ -29,10 +29,10 @@ const Icon = ({ icon }) => {
       <i
         className={`${icon.icon} ${
           grids === "Roomy"
-            ? "text-4xl"
+            ? "text-3xl lg:text-4xl"
             : grids === "Compact"
-            ? "text-3xl"
-            : "text-2xl"
+            ? "text-2xl lg:text-3xl"
+            : "text-xl lg:text-2xl"
         } `}
       ></i>
       <span className="text-gray-500 text-sm px-2">
