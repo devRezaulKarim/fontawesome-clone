@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const gridSlice = createSlice({
   name: "grid",
   initialState: {
-    grid: "Compact",
+    grid: "Roomy",
   },
 
   reducers: {

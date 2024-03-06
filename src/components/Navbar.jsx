@@ -7,9 +7,8 @@ const Navbar = () => {
   return (
     <div className="container max-w-[1080px] mx-auto flex items-center h-20 justify-between">
       <div className="flex gap-20">
-        <div className="logo relative text-2xl">
+        <div className="logo text-2xl">
           <i className="fa-solid fa-font-awesome text-[var(--color-secondary)]"></i>
-          <span className="absolute w-[3px] h-[70%] bg-[#183153] rounded-full left-0 bottom-[6px]"></span>
         </div>
         <ul className="navLinks flex items-center gap-12">
           {navLinksItems.map((item) => (
