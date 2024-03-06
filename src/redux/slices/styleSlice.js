@@ -7,7 +7,7 @@ const styleSlice = createSlice({
   },
   reducers: {
     handleStyles: (state, action) => {
-      const data = action.payload.toLowerCase();
+      const data = action.payload;
       const prevData = state.styles;
       return {
         styles: prevData.includes(data)

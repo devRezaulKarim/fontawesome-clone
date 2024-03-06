@@ -5,6 +5,9 @@ import FilterItem from "./FilterItem";
 
 const Filters = () => {
   const allIcons = useSelector((state) => state.icons.icons);
+  const showingIcons = useSelector((state) => state.icons.uiIcons);
+
+  // generating icons Styles
 
   const iconStyle = iconStyles.map((style) => {
     if (style.name.toLowerCase() === "solid") {
@@ -12,14 +15,35 @@ const Filters = () => {
         ...style,
         count:
           allIcons[style.name.toLowerCase()]?.length +
-            allIcons["brands"]?.length ?? 0,
+          allIcons["brands"]?.length,
       };
     }
     return {
       ...style,
-      count: allIcons[style.name.toLowerCase()]?.length ?? 0,
+      count: allIcons[style.name.toLowerCase()]?.length,
     };
   });
+
+  // generating icons categories
+
+  const categoriesWithIconCount = iconCategories.map((cat) => {
+    let count = 0;
+    showingIcons.forEach((element) => {
+      if (element.category.includes(cat.name)) count++;
+    });
+    return {
+      ...cat,
+      count: count,
+    };
+  });
+
+  const categories = [
+    ...new Set(showingIcons.flatMap((icon) => icon.category)),
+  ];
+  const categoriesToShow = categoriesWithIconCount.filter((cat) =>
+    categories.includes(cat.name)
+  );
+
   return (
     <div className="w-60">
       <div>
@@ -37,7 +61,7 @@ const Filters = () => {
           CATEGORIES
         </h5>
         <ul>
-          {iconCategories.map((item, i) => (
+          {categoriesToShow.map((item, i) => (
             <FilterItem key={i} item={item} />
           ))}
         </ul>

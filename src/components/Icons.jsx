@@ -13,6 +13,9 @@ const Icons = () => {
   const selectedFamily = useSelector((state) => state.families.families);
   const selectedLicense = useSelector((state) => state.license.license);
   const selectedStyles = useSelector((state) => state.styles.styles);
+  const selectedCategories = useSelector(
+    (state) => state.categories.categories
+  );
 
   const dispatch = useDispatch();
 
@@ -43,7 +46,12 @@ const Icons = () => {
     // handling style filtration
     if (selectedStyles.length > 0)
       targetIcons = targetIcons.filter((icon) =>
-        selectedStyles.includes(icon.Style.toLowerCase())
+        selectedStyles.includes(icon.Style)
+      );
+    // handling categories filtration
+    if (selectedCategories.length > 0)
+      targetIcons = targetIcons.filter((icon) =>
+        selectedCategories.every((cat) => icon.category.includes(cat))
       );
 
     setUiIcons(targetIcons);
@@ -55,6 +63,7 @@ const Icons = () => {
     dispatch,
     selectedLicense,
     selectedStyles,
+    selectedCategories,
   ]);
 
   if (loading) {
