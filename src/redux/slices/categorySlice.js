@@ -15,9 +15,14 @@ const categorySlice = createSlice({
           : [...prevData, data],
       };
     },
+    resetCategories: () => {
+      return {
+        categories: [],
+      };
+    },
   },
 });
 
-export const { handleCategories } = categorySlice.actions;
+export const { handleCategories, resetCategories } = categorySlice.actions;
 
 export default categorySlice.reducer;

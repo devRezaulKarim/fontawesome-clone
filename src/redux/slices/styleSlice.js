@@ -15,9 +15,14 @@ const styleSlice = createSlice({
           : [...prevData, data],
       };
     },
+    handleResetStyles: () => {
+      return {
+        styles: [],
+      };
+    },
   },
 });
 
-export const { handleStyles } = styleSlice.actions;
+export const { handleStyles, handleResetStyles } = styleSlice.actions;
 
 export default styleSlice.reducer;

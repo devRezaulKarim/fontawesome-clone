@@ -15,7 +15,12 @@ const familySlice = createSlice({
           : [...previousData, data],
       };
     },
+    handleResetFamilies: () => {
+      return {
+        families: [],
+      };
+    },
   },
 });
-export const { handleIconFamilies } = familySlice.actions;
+export const { handleIconFamilies, handleResetFamilies } = familySlice.actions;
 export default familySlice.reducer;

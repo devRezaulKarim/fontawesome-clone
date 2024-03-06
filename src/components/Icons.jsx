@@ -5,6 +5,7 @@ import { sortFunction } from "../utls/sortFunction";
 import { handleUiIcons } from "../redux/slices/iconSlice";
 import { iconProcessor } from "../utls/IconProcessor";
 import ReactPaginate from "react-paginate";
+import AppliedFilters from "./AppliedFilters";
 
 const Icons = () => {
   const allIcons = useSelector((state) => state.icons.icons);
@@ -116,6 +117,9 @@ const Icons = () => {
           <h4 className="font-bold font-quicksand text-xl text-[var(--color-primary)]">
             {uiIcons.length.toLocaleString()} Icons
           </h4>
+          <div className="flex-grow ml-4">
+            <AppliedFilters />
+          </div>
           <span className="text-gray-500">{`Page ${
             page + 1
           } of ${pageCount}`}</span>
