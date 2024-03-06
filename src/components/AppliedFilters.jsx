@@ -53,7 +53,7 @@ const AppliedFilters = () => {
   };
 
   return (
-    <div className="flex gap-4 text-xs uppercase">
+    <div className="flex gap-4 text-xs uppercase flex-wrap">
       {allFilters?.map((f) => (
         <span
           onClick={() => handleReset(f)}

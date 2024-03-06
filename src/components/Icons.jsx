@@ -113,17 +113,22 @@ const Icons = () => {
   return (
     <div className="w-screen lg:w-full px-4 lg:px-0">
       {uiIcons.length > 0 && (
-        <div className="flex items-center justify-between  py-4">
-          <h4 className="font-bold font-quicksand text-xl text-[var(--color-primary)]">
-            {uiIcons.length.toLocaleString()} Icons
-          </h4>
-          <div className="flex-grow ml-4">
+        <>
+          <div className="flex items-center justify-between  py-4">
+            <h4 className="font-bold font-quicksand text-xl text-[var(--color-primary)]">
+              {uiIcons.length.toLocaleString()} Icons
+            </h4>
+            <div className="flex-grow ml-4 hidden lg:block">
+              <AppliedFilters />
+            </div>
+            <span className="text-gray-500">{`Page ${
+              page + 1
+            } of ${pageCount}`}</span>
+          </div>
+          <div className="flex-grow mb-2 lg:hidden">
             <AppliedFilters />
           </div>
-          <span className="text-gray-500">{`Page ${
-            page + 1
-          } of ${pageCount}`}</span>
-        </div>
+        </>
       )}
 
       <div
