@@ -111,7 +111,7 @@ const Icons = () => {
   }, [page]);
 
   return (
-    <div className="">
+    <div className="w-screen lg:w-full px-4 lg:px-0">
       {uiIcons.length > 0 && (
         <div className="flex items-center justify-between  py-4">
           <h4 className="font-bold font-quicksand text-xl text-[var(--color-primary)]">
