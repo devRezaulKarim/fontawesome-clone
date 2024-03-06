@@ -14,7 +14,7 @@ const IconsContainer = () => {
   }, [dispatch]);
   return (
     <div className="bg-[#F0F1F3]">
-      <div className="container lg:max-w-[1080px] 2xl:xl:max-w-[1440px] mx-auto flex pt-4">
+      <div className="container lg:max-w-[1080px] 2xl:xl:max-w-[1440px] mx-auto flex pt-4 min-h-screen">
         <div className="pr-8">
           <Filters />
         </div>

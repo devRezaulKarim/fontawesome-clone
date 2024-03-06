@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { sortFunction } from "../utls/sortFunction";
 import { handleUiIcons } from "../redux/slices/iconSlice";
 import { iconProcessor } from "../utls/IconProcessor";
+import Spinner from "./Spinner";
 
 const Icons = () => {
   const allIcons = useSelector((state) => state.icons.icons);
@@ -80,7 +81,7 @@ const Icons = () => {
   ]);
 
   if (loading) {
-    return <p>Loading.........</p>;
+    return <Spinner />;
   }
   return (
     <div className={`flex flex-wrap ${grids === "Roomy" ? "gap-5" : "gap-3"}`}>
