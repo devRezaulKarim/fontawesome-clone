@@ -4,12 +4,9 @@ import { useEffect, useState } from "react";
 import { sortFunction } from "../utls/sortFunction";
 import { handleUiIcons } from "../redux/slices/iconSlice";
 import { iconProcessor } from "../utls/IconProcessor";
-import Spinner from "./Spinner";
 
 const Icons = () => {
   const allIcons = useSelector((state) => state.icons.icons);
-  const loading = useSelector((state) => state.icons.isLoading);
-  // const error = useSelector((state) => state.icons.error);
   const sort = useSelector((state) => state.sort.sort);
   const selectedFamily = useSelector((state) => state.families.families);
   const selectedLicense = useSelector((state) => state.license.license);
@@ -80,9 +77,6 @@ const Icons = () => {
     searchedWord,
   ]);
 
-  if (loading) {
-    return <Spinner />;
-  }
   return (
     <div
       className={`flex flex-wrap ${

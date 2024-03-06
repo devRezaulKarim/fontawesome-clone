@@ -1,6 +1,6 @@
 const Spinner = () => {
   return (
-    <div className="w-[800px] flex justify-center">
+    <div className="w-screen flex justify-center">
       <span className="loader"></span>
     </div>
   );
