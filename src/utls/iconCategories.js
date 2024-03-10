@@ -1,5 +1,5 @@
 export const iconCategories = [
-  { name: "Accessibility", icon: "fa-brands fa-accessible-icon" },
+  { name: "Accessibility", icon: "fa-solid fa-universal-access" },
   { name: "Alert", icon: "fa-solid fa-bell-on" },
   { name: "Alphabet", icon: "fa-solid fa-circle-a" },
   { name: "Animals", icon: "fa-solid fa-cat" },

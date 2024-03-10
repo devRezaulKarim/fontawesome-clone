@@ -1,15 +1,26 @@
 import { navLinksItems } from "../utls/navLinksItems";
 import NavLinks from "./NavLinks";
 import { useState } from "react";
+import logo from "../assets/logo/logo.png";
+import logoWave from "../assets/logo/logoWave.webp";
 
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className="container max-w-[1080px] mx-auto flex items-center h-20 justify-between px-8 lg:px-0 relative">
       <div className=" gap-20 hidden md:flex">
-        <div className="logo text-2xl ">
-          <i className="fa-solid fa-font-awesome text-[var(--color-secondary)]"></i>
+        <div
+          onMouseEnter={() => setIsLogoHovered(true)}
+          onMouseLeave={() => setIsLogoHovered(false)}
+          className="logo text-2xl cursor-pointer"
+        >
+          {isLogoHovered ? (
+            <img width={32} src={logoWave} alt="" />
+          ) : (
+            <img width={32} src={logo} alt="" />
+          )}
         </div>
         <ul className="flex flex-col md:flex-row items-center gap-10 ">
           {navLinksItems.map((item) => (
@@ -37,8 +48,16 @@ const Navbar = () => {
         )}
       </div>
 
-      <div className="mobileLogo text-2xl block md:hidden">
-        <i className="fa-solid fa-font-awesome text-[var(--color-secondary)]"></i>
+      <div
+        className="mobileLogo text-2xl block md:hidden cursor-pointer"
+        onMouseEnter={() => setIsLogoHovered(true)}
+        onMouseLeave={() => setIsLogoHovered(false)}
+      >
+        {isLogoHovered ? (
+          <img width={32} src={logoWave} alt="" />
+        ) : (
+          <img width={32} src={logo} alt="" />
+        )}
       </div>
 
       <div className="loginBtn">
